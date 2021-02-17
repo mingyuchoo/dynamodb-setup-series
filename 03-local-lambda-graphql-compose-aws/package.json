@@ -1,0 +1,64 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "eslint --config .eslintrc.yml --fix './src/**/*.ts'",
+    "build": "npm run lint && tsc",
+    "start": "npm run build && npm run sam:start",
+    "win:lint": "eslint --config .eslintrc.yml --fix \"src\\**\\*.ts\"",
+    "win:build": "npm run win:lint && tsc",
+    "win:start": "npm run win:build && npm run sam:start",
+    "test": "npm run generate && jest --verbose --watchAll=false",
+    "generate": "ts-node --transpile-only src/schema",
+    "schemagen": "ts-node src/scripts/schemagen.ts",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "docker:build": "docker-compose --file docker-compose.yml up --build --detach",
+    "docker:exec": "docker exec --interactive=true --tty=true mongo-db /bin/bash",
+    "sam:validate": "sam validate --profile default --template template.yml",
+    "sam:package": "sam package --template-file template.yml --output-template-file package.yml --s3-bucket <s3-bucket-name>",
+    "sam:deploy": "sam deploy --template-file package.yml --capabilities CAPABILITY_IAM --stack-name <s3-bucket-name>",
+    "sam:start": "NODE_ENV=production ENABLE_LAMBDA_EXTENSIONS_PREVIEW=1 sam local start-api --port 4000 --template template.yml --profile default --parameter-overrides \"ParameterKey=paramFeatureBranch,ParameterValue=local\" --skip-pull-image"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-lambda": "^2.21.0",
+    "aws-sdk": "^2.845.0",
+    "graphql": "^15.5.0",
+    "graphql-compose": "^7.25.0",
+    "graphql-compose-aws": "^5.0.0",
+    "graphql-compose-connection": "^8.0.1"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.20.1",
+    "@graphql-codegen/typescript": "^1.21.0",
+    "@graphql-codegen/typescript-operations": "^1.17.14",
+    "@graphql-codegen/typescript-resolvers": "^1.18.2",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.28",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "fs-extra": "^9.1.0",
+    "husky": "^5.0.9",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.5.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint || npm run win:lint"
+    }
+  }
+}

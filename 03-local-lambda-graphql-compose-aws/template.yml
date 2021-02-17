@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+
+Globals:
+  Function:
+    Runtime: nodejs12.x
+    MemorySize: 128
+    Timeout: 3
+    Environment:
+      Variables:
+        NODE_ENV: development
+
+Resources:
+  GraphQL:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/index.handler
+      Events:
+        AnyRequest:
+          Type: Api
+          Properties:
+            Path: /graphql
+            Method: ANY

@@ -1,0 +1,162 @@
+_type: export
+__export_format: 4
+__export_date: 2021-02-17T03:23:52.200Z
+__export_source: insomnia.desktop.app:v2020.5.2
+resources:
+  - _id: req_6c1e35239ca44e9a972370329407a71c
+    parentId: fld_04081d3593b64a02825a522bda681f33
+    modified: 1613531555093
+    created: 1613531477418
+    url: http://localhost:4000/graphql
+    name: listTables
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query {\n  dynamodb {\n    listTables
+        {\n      TableNames\n    }\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_5e020e39271943f6ae82f37ae69450fe
+    authentication: {}
+    metaSortKey: -1613531477318
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_04081d3593b64a02825a522bda681f33
+    parentId: wrk_ccc829de8b974ac4a92021bf83ffebb5
+    modified: 1613074428695
+    created: 1613074428695
+    name: local
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1613074428695
+    _type: request_group
+  - _id: wrk_ccc829de8b974ac4a92021bf83ffebb5
+    parentId: null
+    modified: 1612245432051
+    created: 1612245432051
+    name: Insomnia Designer
+    description: ""
+    scope: spec
+    _type: workspace
+  - _id: req_eb6b683577ce4b5889b6e7a7b6fcbc24
+    parentId: fld_04081d3593b64a02825a522bda681f33
+    modified: 1613531696148
+    created: 1613531587870
+    url: http://localhost:4000/graphql
+    name: putItem
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query {\n  dynamodb {\n    putItem(input: {\n      TableName:
+        \"Cat\"\n      Item:{\n        \tid: {\n           \tS:
+        \"2\"\n          },\n        \tname: {\n            S:
+        \"jelly\"\n          }\n        }\n    })
+        {\n      Attributes\n    }\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_350cc493b231440cbbd91b043356a178
+    authentication: {}
+    metaSortKey: -1613531477293
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_47343852dc0f451d990f2594c65bbe99
+    parentId: fld_04081d3593b64a02825a522bda681f33
+    modified: 1613531708278
+    created: 1613531550442
+    url: http://localhost:4000/graphql
+    name: getItem
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query {\n  dynamodb {\n    getItem(\n      input:
+        {\n        TableName: \"Cat\"\n        Key: {\n        \tid:
+        {\n           \tS: \"1\"\n          }\n        }\n      }\n    )
+        {\n      Item\n    }\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_d658b15e776549b2a4e18e5da7110340
+    authentication: {}
+    metaSortKey: -1613531477268
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2ae2cac694d8420888d35e152cb0c584
+    parentId: fld_04081d3593b64a02825a522bda681f33
+    modified: 1613532189080
+    created: 1613531701882
+    url: http://localhost:4000/graphql
+    name: scan
+    description: ""
+    method: POST
+    body:
+      mimeType: application/graphql
+      text: '{"query":"query {\n  dynamodb {\n  scan(\n    input: {\n      TableName:
+        \"Cat\"\n    }) {\n      Count\n      Items\n  \t}\n  }\n}"}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_4bbd4958a6f3433aa1eadac86336b476
+    authentication: {}
+    metaSortKey: -1613531477218
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_e7a5acc1c67b71d089e1bcb5818f07846f426987
+    parentId: wrk_ccc829de8b974ac4a92021bf83ffebb5
+    modified: 1612245432118
+    created: 1612245432118
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1612245432118
+    _type: environment
+  - _id: jar_e7a5acc1c67b71d089e1bcb5818f07846f426987
+    parentId: wrk_ccc829de8b974ac4a92021bf83ffebb5
+    modified: 1612245432119
+    created: 1612245432119
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_37d0bf2788e9444296d1b63a2e0c00f2
+    parentId: wrk_ccc829de8b974ac4a92021bf83ffebb5
+    modified: 1613531448831
+    created: 1612245432054
+    fileName: Insomnia Designer
+    contents: ""
+    contentType: yaml
+    _type: api_spec
