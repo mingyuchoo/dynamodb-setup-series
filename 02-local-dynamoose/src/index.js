@@ -1,4 +1,3 @@
-//const AWS = require('aws-sdk');
 const dynamoose = require('dynamoose');
 
 dynamoose.aws.sdk.config.update({
@@ -6,7 +5,38 @@ dynamoose.aws.sdk.config.update({
 });
 dynamoose.aws.ddb.local('http://localhost:8000');
 
-const Cat = dynamoose.model('Cat', { id: Number, name: String });
+const catSchema = new dynamoose.Schema({
+  id: {
+    type: Number,
+    required: true,
+  },
+  name: {
+    type: String,
+  },
+});
+const userSchema = new dynamoose.Schema({
+  id: {
+    type: String,
+    required: true,
+  },
+  username: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
+});
+
+const Cat = dynamoose.model('Cat', catSchema);
+const User = dynamoose.model('User', userSchema);
+
+User.create({ id: 1, username: 'bob', email: 'bob@email.com' }, (error, user) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log(user);
+  }
+});
 
 Cat.create({ id: 1, name: 'bod' }, (error, cat) => {
   if (error) {

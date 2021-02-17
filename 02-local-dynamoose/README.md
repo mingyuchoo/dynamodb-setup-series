@@ -15,7 +15,12 @@
 
 - `yarn dev` - 개발모드로 실행
 
+## 로컬 DynamoDB를 CLI로 사용하기
+
+- `aws dynamodb list-tables --endpoint-url http://localhost:8000`
+
 ## 참고한 페이지
 
 - https://keithweaverca.medium.com/using-aws-dynamodb-using-node-js-fd17cf1724e0
 - https://github.com/keithweaver/MERN-boilerplate/tree/master-w-dynamodb
+- https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.CLI.html
