@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.845.0",
-    "dynamoose": "^2.7.0"
+    "aws-sdk": "^2.893.0",
+    "dynamoose": "^2.7.3"
   }
 }
