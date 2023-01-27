@@ -24,7 +24,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "apollo-server-lambda": "^2.23.0",
     "aws-sdk": "^2.893.0",
