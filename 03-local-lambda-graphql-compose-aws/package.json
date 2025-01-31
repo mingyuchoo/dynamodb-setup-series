@@ -24,7 +24,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT",
+  "license": "BSD 3-Clause",
   "dependencies": {
     "apollo-server-lambda": "^2.23.0",
     "aws-sdk": "^2.893.0",

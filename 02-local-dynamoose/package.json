@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT",
+  "license": "BSD 3-Clause",
   "dependencies": {
     "aws-sdk": "^2.893.0",
     "dynamoose": "^2.7.3"
